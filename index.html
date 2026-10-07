@@ -35,6 +35,23 @@
         </button>
     </div>
 
+    <div class="bulk-section">
+         
+        <textarea
+        id="bulkSteps"
+        rows="10"
+        placeholder="Paste one step per line"></textarea>
+         
+        <button onclick="bulkAddSteps()">
+        Add Steps
+        </button>
+         
+    </div>
+
+    <button onclick="exportCSV()">
+        Download Report
+    </button>
+
     <div id="checklists"></div>
 
     <script src="script.js"></script>

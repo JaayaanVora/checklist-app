@@ -170,3 +170,91 @@ function loadChecklists() {
 
     });
 }
+
+function bulkAddSteps() {
+
+    let steps =
+        document.getElementById("bulkSteps")
+        .value
+        .split("\n")
+        .filter(x => x.trim() !== "");
+
+    let checklists =
+        JSON.parse(
+            localStorage.getItem("checklists")
+            || "[]"
+        );
+
+    if (checklists.length === 0) {
+        alert("Create a checklist first");
+        return;
+    }
+
+    let checklist =
+        checklists[checklists.length - 1];
+
+    steps.forEach(step => {
+
+        checklist.items.push({
+            text: step,
+            completed: false,
+            completedBy: "",
+            timestamp: ""
+        });
+
+    });
+
+    localStorage.setItem(
+        "checklists",
+        JSON.stringify(checklists)
+    );
+
+    loadChecklists();
+
+    alert(
+        steps.length +
+        " steps added successfully"
+    );
+}
+
+function exportCSV() {
+
+    let checklists =
+        JSON.parse(
+            localStorage.getItem("checklists")
+            || "[]"
+        );
+
+    let csv =
+        "Checklist,Step,Completed,User,Timestamp\n";
+
+    checklists.forEach(cl => {
+
+        cl.items.forEach(item => {
+
+            csv +=
+                `"${cl.name}",` +
+                `"${item.text}",` +
+                `"${item.completed}",` +
+                `"${item.completedBy}",` +
+                `"${item.timestamp}"\n`;
+
+        });
+
+    });
+
+    let blob =
+        new Blob([csv],
+        { type: 'text/csv' });
+
+    let a =
+        document.createElement("a");
+
+    a.href =
+        URL.createObjectURL(blob);
+
+    a.download =
+        "Checklist_Report.csv";
+
+    a.click();
+}
