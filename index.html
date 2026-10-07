@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checklist Manager</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>Checklist Manager</h1>
+
+    <div class="user-section">
+        <input
+            type="text"
+            id="userName"
+            placeholder="Enter your name">
+
+        <button onclick="saveUser()">
+            Save User
+        </button>
+    </div>
+
+    <div class="checklist-creator">
+        <input
+            type="text"
+            id="checklistName"
+            placeholder="Checklist Name">
+
+        <button onclick="createChecklist()">
+            Create Checklist
+        </button>
+    </div>
+
+    <div id="checklists"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

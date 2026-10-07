@@ -1,0 +1,24 @@
+body {
+    font-family: Arial;
+    margin: 20px;
+}
+
+input {
+    padding: 10px;
+    margin: 5px;
+}
+
+button {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.checklist {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.item {
+    margin: 8px 0;
+}
